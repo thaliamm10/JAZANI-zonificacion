@@ -27,7 +27,8 @@ namespace Jazani.ICL.Datos.CompendioNormas.Repositorios.Implementaciones
             var response = await UnidadDeTrabajo.NormaInteress
                 .Include(t => t.Naturaleza)
                 .Include(te => te.NormaInteresModulo).ThenInclude(te => te.Modulo)
-                .ToListAsync();    
+                .Where(t => t.Estado == 1 )
+                .ToListAsync();
             //.Where(e => (string.IsNullOrWhiteSpace(norma) || e.Nombre.Contains(norma))
                 //            && (string.IsNullOrWhiteSpace(id_naturaleza) || e.IdNaturaleza.Equals(id_naturaleza)
                 //                && ((string.IsNullOrWhiteSpace(fecha_publicacion_inicio) && string.IsNullOrWhiteSpace(fecha_publicacion_fin)) || (e.FechaPublicacion >= DateTime.Parse(fecha_publicacion_inicio) && e.FechaPublicacion <= DateTime.Parse(fecha_publicacion_fin)))
